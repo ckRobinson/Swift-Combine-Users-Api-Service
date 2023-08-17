@@ -48,6 +48,21 @@ class UserDataService {
         }
         return try JSONDecoder().decode([UserPostData].self, from: data)
     }
+
+    public func fetchPostUsingAsyncAwait(postID: Int) async throws -> UserPostData {
+        
+        guard var url = URL(string: self.apiUrl) else {
+            throw APIError.invalidUrl
+        }
+        url.append(component: "\(postID)")
+        
+        let (data, response) = try await URLSession.shared.data(from: url);
+        guard let resp = response as? HTTPURLResponse,
+                  resp.statusCode == 200 else {
+            throw APIError.invalidResponse
+        }
+        return try JSONDecoder().decode(UserPostData.self, from: data)
+    }
     
     public func addPostUsingAsyncAwait(_ postData: UserPostData) async throws -> UserPostData {
         
