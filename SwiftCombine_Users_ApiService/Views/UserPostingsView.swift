@@ -7,27 +7,10 @@
 
 import SwiftUI
 
-struct UserPostingsView: View {
-        
-    let userData: User
-    var body: some View {
-
-        VStack {
-            Text("User \(userData.userID)")
-                .font(.system(size: 20).bold())
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
-                
-            ScrollView {
-                ForEach(userData.userPosts.sorted(by: { $0.postID < $1.postID }), id: \.postID) { post in
-
-                    postListing(postData: post)
-                }
-            }
-        }
-    }
+struct PostListing: View {
     
-    private func postListing(postData: UserPostData) -> some View {
+    let postData: UserPostData
+    var body: some View {
         VStack(alignment: .leading) {
             Text("\(postData.postTitle)")
                 .font(.system(size: 16).bold())
@@ -43,6 +26,27 @@ struct UserPostingsView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(.gray.opacity(0.4))
         .cornerRadius(15)
+    }
+}
+
+struct UserPostingsView: View {
+        
+    let userData: User
+    var body: some View {
+
+        VStack {
+            Text("User \(userData.userID)")
+                .font(.system(size: 20).bold())
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+                
+            ScrollView {
+                ForEach(userData.userPosts.sorted(by: { $0.postID < $1.postID }), id: \.postID) { post in
+
+                    PostListing(postData: post)
+                }
+            }
+        }
     }
 }
 
