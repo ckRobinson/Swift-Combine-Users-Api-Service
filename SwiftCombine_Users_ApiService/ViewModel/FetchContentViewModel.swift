@@ -8,7 +8,7 @@
 import Foundation
 import Combine;
 
-class UserDataViewModel: ObservableObject {
+class FetchContentViewModel: ObservableObject {
     
     @Published var users: Dictionary<Int, User> = Dictionary();
     let userDataService: UserDataService = UserDataService();

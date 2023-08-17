@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FetchContentView: View {
-    @StateObject var viewModel = UserDataViewModel()
+    @StateObject var viewModel = FetchContentViewModel()
     var body: some View {
         
         NavigationView {
