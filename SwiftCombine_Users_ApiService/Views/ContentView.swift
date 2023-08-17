@@ -12,31 +12,31 @@ struct ContentView: View {
     var body: some View {
         
         TabView {
-//            FetchContentView()
-//                .tabItem {
-//                    Text("Fetch")
-//                    Image(systemName: "square.and.arrow.down")
-//                }
+            FetchContentView()
+                .tabItem {
+                    Text("Fetch")
+                    Image(systemName: "square.and.arrow.down")
+                }
             
-//            PostContentView()
-//                .tabItem {
-//                    Text("Post")
-//                    Image(systemName: "square.and.arrow.up")
-//                }
+            PostContentView()
+                .tabItem {
+                    Text("Post")
+                    Image(systemName: "square.and.arrow.up")
+                }
             
-            Text("Put")
+            PutContentView()
                 .tabItem {
                     Text("Put")
                     Image(systemName: "square.and.arrow.up.on.square")
                 }
             
-            Text("Patch")
+            PatchContentView()
                 .tabItem {
                     Text("Patch")
                     Image(systemName: "square.and.pencil")
                 }
             
-            Text("Delete")
+            DeleteContentView()
                 .tabItem {
                     Text("Delete")
                     Image(systemName: "xmark.bin")
