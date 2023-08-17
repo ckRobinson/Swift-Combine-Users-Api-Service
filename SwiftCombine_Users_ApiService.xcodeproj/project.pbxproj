@@ -122,8 +122,8 @@
 		7E3299EB2A44B81E0077868D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7E3299EC2A44B81E0077868D /* FetchContentViewModel.swift */,
 				7E7A97752A8EC62B00807128 /* ViewState.swift */,
+				7E3299EC2A44B81E0077868D /* FetchContentViewModel.swift */,
 				7E7A977B2A8EE5FF00807128 /* PostViewModel.swift */,
 				7E7A977D2A8EE61400807128 /* PutViewModel.swift */,
 				7E7A977F2A8EE62F00807128 /* PatchViewModel.swift */,

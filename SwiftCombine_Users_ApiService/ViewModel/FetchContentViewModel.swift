@@ -31,64 +31,64 @@ class FetchContentViewModel: ObservableObject {
         }
     }
     
-    @MainActor func postAsyncAwait() {
-        Task {
-            do {
-                let post: UserPostData = try await self.userDataService.addPostUsingAsyncAwait(UserPostData(userID: 2,
-                                                                                                            postID: 8,
-                                                                                                            postTitle: "POST",
-                                                                                                            postBody: "POST: Body"))
-                print("POST Response: \(post)")
-            }
-            catch {
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    @MainActor func putAsyncAwait() {
-        Task {
-            
-            do {
-                let post: UserPostData = try await self.userDataService
-                                                       .putPostUsingAsyncAwait(UserPostData(userID: 2,
-                                                                                            postID: 8,
-                                                                                            postTitle: "PUT",
-                                                                                            postBody: "PUT: Body"))
-                print("PUT Response: \(post)")
-            }
-            catch {
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    @MainActor func patchAsyncAwait() {
-        Task {
-            
-            do {
-                let post: UserPostData = try await self.userDataService
-                                                       .patchPostUsingAsyncAwait(data: ["title": "Patch Title"])
-                print("PATCH Response: \(post)")
-            }
-            catch {
-                print(error.localizedDescription)
-            }
-        }
-    }
-    @MainActor func deleteAsyncAwait() {
-        Task {
-            
-            do {
-                try await self.userDataService
-                              .deletePostUsingAsyncAwait()
-                print("DELETE Response: DELETED")
-            }
-            catch {
-                print(error.localizedDescription)
-            }
-        }
-    }
+//    @MainActor func postAsyncAwait() {
+//        Task {
+//            do {
+//                let post: UserPostData = try await self.userDataService.addPostUsingAsyncAwait(UserPostData(userID: 2,
+//                                                                                                            postID: 8,
+//                                                                                                            postTitle: "POST",
+//                                                                                                            postBody: "POST: Body"))
+//                print("POST Response: \(post)")
+//            }
+//            catch {
+//                print(error.localizedDescription)
+//            }
+//        }
+//    }
+//
+//    @MainActor func putAsyncAwait() {
+//        Task {
+//
+//            do {
+//                let post: UserPostData = try await self.userDataService
+//                                                       .putPostUsingAsyncAwait(UserPostData(userID: 2,
+//                                                                                            postID: 8,
+//                                                                                            postTitle: "PUT",
+//                                                                                            postBody: "PUT: Body"))
+//                print("PUT Response: \(post)")
+//            }
+//            catch {
+//                print(error.localizedDescription)
+//            }
+//        }
+//    }
+//
+//    @MainActor func patchAsyncAwait() {
+//        Task {
+//
+//            do {
+//                let post: UserPostData = try await self.userDataService
+//                                                       .patchPostUsingAsyncAwait(data: ["title": "Patch Title"])
+//                print("PATCH Response: \(post)")
+//            }
+//            catch {
+//                print(error.localizedDescription)
+//            }
+//        }
+//    }
+//    @MainActor func deleteAsyncAwait() {
+//        Task {
+//
+//            do {
+//                try await self.userDataService
+//                              .deletePostUsingAsyncAwait()
+//                print("DELETE Response: DELETED")
+//            }
+//            catch {
+//                print(error.localizedDescription)
+//            }
+//        }
+//    }
     
     public func fetchData() {
         
