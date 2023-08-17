@@ -16,6 +16,8 @@
 		7E3299F32A44B81E0077868D /* UserDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3299EC2A44B81E0077868D /* UserDataViewModel.swift */; };
 		7E3299F42A44B81E0077868D /* UserPostingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3299EE2A44B81E0077868D /* UserPostingsView.swift */; };
 		7E3299F52A44B81E0077868D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3299EF2A44B81E0077868D /* ContentView.swift */; };
+		7E7A97702A8EBBD100807128 /* FetchContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7A976F2A8EBBD100807128 /* FetchContentView.swift */; };
+		7E7A97722A8EC29400807128 /* PostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7A97712A8EC29400807128 /* PostContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		7E3299EC2A44B81E0077868D /* UserDataViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataViewModel.swift; sourceTree = "<group>"; };
 		7E3299EE2A44B81E0077868D /* UserPostingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostingsView.swift; sourceTree = "<group>"; };
 		7E3299EF2A44B81E0077868D /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7E7A976F2A8EBBD100807128 /* FetchContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchContentView.swift; sourceTree = "<group>"; };
+		7E7A97712A8EC29400807128 /* PostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,8 @@
 			children = (
 				7E3299EE2A44B81E0077868D /* UserPostingsView.swift */,
 				7E3299EF2A44B81E0077868D /* ContentView.swift */,
+				7E7A976F2A8EBBD100807128 /* FetchContentView.swift */,
+				7E7A97712A8EC29400807128 /* PostContentView.swift */,
 			);
 			name = Views;
 			path = SwiftCombine_Users_ApiService/Views;
@@ -189,10 +195,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E3299F42A44B81E0077868D /* UserPostingsView.swift in Sources */,
+				7E7A97702A8EBBD100807128 /* FetchContentView.swift in Sources */,
 				7E3299F22A44B81E0077868D /* UserPostData.swift in Sources */,
 				7E3299F52A44B81E0077868D /* ContentView.swift in Sources */,
 				7E3299F02A44B81E0077868D /* UserDataService.swift in Sources */,
 				7E3299D92A44B7850077868D /* SwiftCombine_Users_ApiServiceApp.swift in Sources */,
+				7E7A97722A8EC29400807128 /* PostContentView.swift in Sources */,
 				7E3299F12A44B81E0077868D /* User.swift in Sources */,
 				7E3299F32A44B81E0077868D /* UserDataViewModel.swift in Sources */,
 			);
