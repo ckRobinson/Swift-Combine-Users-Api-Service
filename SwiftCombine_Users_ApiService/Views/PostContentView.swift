@@ -7,13 +7,10 @@
 
 import SwiftUI
 
-enum PostViewState {
-    case initial, posting, posted, error, badInput
-}
 
 class PostViewModel: ObservableObject {
-    @Published var viewState: PostViewState = .initial
-    @Published var userData: UserPostData? = nil
+    @Published var viewState: ViewState = .initial
+    @Published var postData: UserPostData? = nil
     private let service: UserDataService = UserDataService()
     
     @MainActor func postData(postTitle: String, postBody: String) {
@@ -22,13 +19,13 @@ class PostViewModel: ObservableObject {
             return;
         }
         
-        self.viewState = .posting
+        self.viewState = .loading
         Task {
             
             do {
                 let data = try await service.addPostUsingAsyncAwait(UserPostData(userID: 1, postID: 1, postTitle: postTitle, postBody: postBody))
-                self.userData = data
-                self.viewState = .posted
+                self.postData = data
+                self.viewState = .loaded
             }
             catch {
                 print(error)
@@ -45,7 +42,13 @@ struct PostContentView: View {
     @State var postBody: String = ""
     
     var body: some View {
-        VStack {
+        ScrollView {
+            Text("Post")
+                .font(.title)
+                .fontWeight(.bold)
+                .padding(.bottom)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
             Text("Post Title:")
                 .font(.title3)
                 .fontWeight(.bold)
@@ -74,17 +77,17 @@ struct PostContentView: View {
             .padding(.bottom)
             
             Divider()
+                .padding(.bottom)
             
-            Spacer()
             switch viewModel.viewState {
                 case .initial:
-                    Text("Submit data above to make a post request.")
+                    Text("Submit data above to create a post.")
                     
-                case .posting:
+                case .loading:
                     ProgressView()
-                case .posted:
+                case .loaded:
                     Text("Data posted to server: ")
-                    displayPostedData(postedData: viewModel.userData)
+                    displayPostedData(postedData: viewModel.postData)
 
                 case .error:
                     Text("Could not complete request. Please try again later.")
@@ -92,7 +95,6 @@ struct PostContentView: View {
                 case .badInput:
                     Text("Please check your post title and body and try again.")
             }
-            Spacer()
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .padding(.top)
