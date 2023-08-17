@@ -18,6 +18,10 @@
 		7E3299F52A44B81E0077868D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3299EF2A44B81E0077868D /* ContentView.swift */; };
 		7E7A97702A8EBBD100807128 /* FetchContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7A976F2A8EBBD100807128 /* FetchContentView.swift */; };
 		7E7A97722A8EC29400807128 /* PostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7A97712A8EC29400807128 /* PostContentView.swift */; };
+		7E7A97742A8EC5D500807128 /* PutContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7A97732A8EC5D500807128 /* PutContentView.swift */; };
+		7E7A97762A8EC62B00807128 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7A97752A8EC62B00807128 /* ViewState.swift */; };
+		7E7A97782A8EDB9800807128 /* PatchContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7A97772A8EDB9800807128 /* PatchContentView.swift */; };
+		7E7A977A2A8EE3FD00807128 /* DeleteContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7A97792A8EE3FD00807128 /* DeleteContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +37,10 @@
 		7E3299EF2A44B81E0077868D /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7E7A976F2A8EBBD100807128 /* FetchContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchContentView.swift; sourceTree = "<group>"; };
 		7E7A97712A8EC29400807128 /* PostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentView.swift; sourceTree = "<group>"; };
+		7E7A97732A8EC5D500807128 /* PutContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutContentView.swift; sourceTree = "<group>"; };
+		7E7A97752A8EC62B00807128 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		7E7A97772A8EDB9800807128 /* PatchContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchContentView.swift; sourceTree = "<group>"; };
+		7E7A97792A8EE3FD00807128 /* DeleteContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				7E3299EC2A44B81E0077868D /* UserDataViewModel.swift */,
+				7E7A97752A8EC62B00807128 /* ViewState.swift */,
 			);
 			name = ViewModel;
 			path = SwiftCombine_Users_ApiService/ViewModel;
@@ -119,6 +128,9 @@
 				7E3299EF2A44B81E0077868D /* ContentView.swift */,
 				7E7A976F2A8EBBD100807128 /* FetchContentView.swift */,
 				7E7A97712A8EC29400807128 /* PostContentView.swift */,
+				7E7A97732A8EC5D500807128 /* PutContentView.swift */,
+				7E7A97772A8EDB9800807128 /* PatchContentView.swift */,
+				7E7A97792A8EE3FD00807128 /* DeleteContentView.swift */,
 			);
 			name = Views;
 			path = SwiftCombine_Users_ApiService/Views;
@@ -197,12 +209,16 @@
 				7E3299F42A44B81E0077868D /* UserPostingsView.swift in Sources */,
 				7E7A97702A8EBBD100807128 /* FetchContentView.swift in Sources */,
 				7E3299F22A44B81E0077868D /* UserPostData.swift in Sources */,
+				7E7A97762A8EC62B00807128 /* ViewState.swift in Sources */,
 				7E3299F52A44B81E0077868D /* ContentView.swift in Sources */,
 				7E3299F02A44B81E0077868D /* UserDataService.swift in Sources */,
 				7E3299D92A44B7850077868D /* SwiftCombine_Users_ApiServiceApp.swift in Sources */,
+				7E7A97742A8EC5D500807128 /* PutContentView.swift in Sources */,
 				7E7A97722A8EC29400807128 /* PostContentView.swift in Sources */,
 				7E3299F12A44B81E0077868D /* User.swift in Sources */,
+				7E7A977A2A8EE3FD00807128 /* DeleteContentView.swift in Sources */,
 				7E3299F32A44B81E0077868D /* UserDataViewModel.swift in Sources */,
+				7E7A97782A8EDB9800807128 /* PatchContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
