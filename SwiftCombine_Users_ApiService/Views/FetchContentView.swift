@@ -14,11 +14,16 @@ struct FetchContentView: View {
         NavigationView {
             
             ScrollView {
+                
+                Text("Fetch")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.bottom)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
                 userList
             }
-            .navigationTitle("Users")
         }
-        .padding()
         .onAppear() {
             viewModel.fetchPostsAsyncAwait()
         }
@@ -30,7 +35,6 @@ struct FetchContentView: View {
                 
                 NavigationLink(destination: {
                     UserPostingsView(userData: user)
-                        .padding(.top, -55);
                 }, label: {
                     userListing(userData: user);
                 })
@@ -58,5 +62,6 @@ struct FetchContentView: View {
 struct FetchContentView_Previews: PreviewProvider {
     static var previews: some View {
         FetchContentView()
+            .padding(.horizontal)
     }
 }
