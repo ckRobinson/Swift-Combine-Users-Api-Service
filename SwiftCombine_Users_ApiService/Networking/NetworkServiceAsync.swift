@@ -36,7 +36,7 @@ class NetworkServiceAsync {
     let apiUrl: String = "https://jsonplaceholder.typicode.com/posts";
     var cancellable = Set<AnyCancellable>();
 
-    public func fetchPostsUsingAsyncAwait() async throws -> [UserPostData] {
+    public func fetchPosts() async throws -> [UserPostData] {
         
         guard let url = URL(string: self.apiUrl) else {
             throw APIError.invalidUrl
@@ -49,7 +49,7 @@ class NetworkServiceAsync {
         return try JSONDecoder().decode([UserPostData].self, from: data)
     }
 
-    public func fetchPostUsingAsyncAwait(postID: Int) async throws -> UserPostData {
+    public func fetchPost(postID: Int) async throws -> UserPostData {
         
         guard var url = URL(string: self.apiUrl) else {
             throw APIError.invalidUrl

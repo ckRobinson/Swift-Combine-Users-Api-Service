@@ -20,7 +20,7 @@ class PutViewModel: ObservableObject {
         Task {
             
             do {
-                self.originalPostData = try await service.fetchPostUsingAsyncAwait(postID: 1)
+                self.originalPostData = try await service.fetchPost(postID: 1)
                 self.originalDataViewState = .loaded
             }
             catch {

@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import Combine
 
 class NetworkServicePublisher {
 
     let apiUrl: String = "https://jsonplaceholder.typicode.com/posts";
     
-    func fetchData() -> AnyPublisher<[UserPostData], Never> {
+    func fetchPosts() -> AnyPublisher<[UserPostData], Never> {
         
         guard let url = URL(string: self.apiUrl) else {
             let subject = CurrentValueSubject<[UserPostData], Never>([])

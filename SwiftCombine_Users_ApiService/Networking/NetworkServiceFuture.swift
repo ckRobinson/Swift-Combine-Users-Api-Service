@@ -13,7 +13,7 @@ class NetworkServiceFuture {
     let apiUrl: String = "https://jsonplaceholder.typicode.com/posts";
     var cancellable = Set<AnyCancellable>();
     
-    public func fetchDataFuture() -> Future<[UserPostData], Error> {
+    public func fetchPosts() -> Future<[UserPostData], Error> {
         
         return Future {[weak self] promise in
             
@@ -49,7 +49,7 @@ class NetworkServiceFuture {
         }
     }
     
-    public func fetchPostFuture(postID: Int) -> Future<UserPostData, Error> {
+    public func fetchPost(postID: Int) -> Future<UserPostData, Error> {
         
         return Future {[weak self] promise in
             
