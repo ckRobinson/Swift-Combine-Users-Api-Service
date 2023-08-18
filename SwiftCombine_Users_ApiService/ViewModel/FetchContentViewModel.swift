@@ -42,6 +42,8 @@ class FetchContentViewModel: ObservableObject {
     }
     
     @MainActor private func fetchPostsAsync() {
+        print("Fetching with Async")
+        
         Task {
             do {
                 let posts: [UserPostData] = try await self.networkServiceAsync.fetchPosts()
@@ -59,7 +61,8 @@ class FetchContentViewModel: ObservableObject {
     }
     
     private func fetchPostsFuture() {
-
+        print("Fetching with Future")
+        
         self.networkServiceFuture.fetchPosts()
             .sink(receiveCompletion: { completion in
                 switch(completion) {
@@ -70,7 +73,6 @@ class FetchContentViewModel: ObservableObject {
                     return;
                 }
             }, receiveValue: {[weak self] data in
-                print("Recieved \(data.count) items from server. Processing.")
                 self?.processData(data: data);
             })
             .store(in: &self.cancellable)
@@ -88,7 +90,6 @@ class FetchContentViewModel: ObservableObject {
                     return;
                 }
             }, receiveValue: {[weak self] data in
-                print("Recieved \(data.count) items from server. Processing.")
                 self?.processData(data: data);
             })
             .store(in: &self.cancellable)
