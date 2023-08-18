@@ -15,13 +15,11 @@ class NetworkServicePublisher {
     func fetchPosts() -> AnyPublisher<[UserPostData], Never> {
         
         guard let url = URL(string: self.apiUrl) else {
-            let subject = CurrentValueSubject<[UserPostData], Never>([])
-            return subject.eraseToAnyPublisher()
+            return CurrentValueSubject<[UserPostData], Never>([]).eraseToAnyPublisher()
         }
         
         return URLSession.shared.dataTaskPublisher(for: url)
             .map {
-                print("Received data. Continuing processing.")
                 return $0.data
             }
             .decode(type: [UserPostData].self, decoder: JSONDecoder())
