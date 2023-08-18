@@ -22,6 +22,11 @@ class PostViewModel: ObservableObject {
     let networkServicePublusher: NetworkServicePublisher = NetworkServicePublisher();
     
     public func postData(postTitle: String, postBody: String) {
+        if postTitle == "" || postBody == "" {
+            self.viewState = .badInput
+            return;
+        }
+        
         switch self.serviceType {
             case .AsyncAwait:
                 // Not sure if this is good pracice, just using it for
@@ -40,10 +45,7 @@ class PostViewModel: ObservableObject {
     }
     
     @MainActor private func postDataAsync(postTitle: String, postBody: String) {
-        if postTitle == "" || postBody == "" {
-            self.viewState = .badInput
-            return;
-        }
+        print("Posting with Async")
         
         self.viewState = .loading
         Task {
@@ -61,11 +63,7 @@ class PostViewModel: ObservableObject {
     }
     
     private func postDataFuture(postTitle: String, postBody: String) {
-     
-        if postTitle == "" || postBody == "" {
-            self.viewState = .badInput
-            return;
-        }
+        print("Posting with Future")
         
         self.viewState = .loading
         self.networkServiceFuture.postUserPost(UserPostData(userID: 1,
