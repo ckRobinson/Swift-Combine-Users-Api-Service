@@ -21,14 +21,28 @@ struct DeleteContentView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             
-            Button(action: {
-                viewModel.deleteData()
-            }) {
-                Text("Delete data on server.")
+            HStack {
+                Button(action: {
+                    viewModel.deleteData(.AsyncAwait)
+
+                }) {
+                    Text("Delete w/ Async")
+                }
+                .padding(5)
+                .background(Color(UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)))
+                .cornerRadius(10)
+                
+                Button(action: {
+                    viewModel.deleteData(.CombineFuture)
+                }) {
+                    Text("Delete w/ Future")
+                }
+                .padding(5)
+                .background(Color(UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)))
+                .cornerRadius(10)
             }
-            .padding(5)
-            .background(Color(UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)))
-            .cornerRadius(10)
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            .padding(.bottom)
             
             Divider()
                 .padding(.bottom)

@@ -35,18 +35,30 @@ struct PatchContentView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             TextField("Body", text: $postBody, axis: .vertical)
             
-            Group {
+            HStack {
                 Button(action: {
-                    viewModel.patchData(postTitle: postTitle, postBody: postBody)
+                    viewModel.patchData(postTitle: postTitle,
+                                       postBody: postBody,
+                                       .AsyncAwait)
                 }) {
-                    Text("Submit")
+                    Text("Submit w/ Async")
+                }
+                .padding(5)
+                .background(Color(UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)))
+                .cornerRadius(10)
+                
+                Button(action: {
+                    viewModel.patchData(postTitle: postTitle,
+                                       postBody: postBody,
+                                       .CombineFuture)
+                }) {
+                    Text("Submit w/ Future")
                 }
                 .padding(5)
                 .background(Color(UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)))
                 .cornerRadius(10)
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
-            .padding(.trailing)
             .padding(.bottom)
             
             Divider()
