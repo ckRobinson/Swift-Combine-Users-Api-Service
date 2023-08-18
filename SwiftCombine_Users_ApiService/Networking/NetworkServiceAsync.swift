@@ -31,11 +31,11 @@ enum APIError: Error {
     }
 }
 
-class UserDataService {
-    
+class NetworkServiceAsync {
+
     let apiUrl: String = "https://jsonplaceholder.typicode.com/posts";
     var cancellable = Set<AnyCancellable>();
-    
+
     public func fetchPostsUsingAsyncAwait() async throws -> [UserPostData] {
         
         guard let url = URL(string: self.apiUrl) else {

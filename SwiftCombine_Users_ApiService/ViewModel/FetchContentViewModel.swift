@@ -11,7 +11,7 @@ import Combine;
 class FetchContentViewModel: ObservableObject {
     
     @Published var users: Dictionary<Int, User> = Dictionary();
-    let userDataService: UserDataService = UserDataService();
+    let userDataService: NetworkServiceAsync = NetworkServiceAsync();
     var cancellable = Set<AnyCancellable>();
     
     @MainActor func fetchPostsAsyncAwait() {

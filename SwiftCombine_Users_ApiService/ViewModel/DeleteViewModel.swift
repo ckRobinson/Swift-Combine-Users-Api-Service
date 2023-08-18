@@ -11,7 +11,7 @@ class DeleteViewModel: ObservableObject {
     @Published var originalDataViewState: ViewState = .initial
     @Published var viewState: ViewState = .initial
     @Published var originalPostData: UserPostData? = nil
-    private let service: UserDataService = UserDataService()
+    private let service: NetworkServiceAsync = NetworkServiceAsync()
 
     @MainActor func fetchOriginalData() {
 

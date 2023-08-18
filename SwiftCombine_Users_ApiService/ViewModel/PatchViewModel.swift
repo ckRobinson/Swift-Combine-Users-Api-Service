@@ -12,7 +12,7 @@ class PatchViewModel: ObservableObject {
     @Published var viewState: ViewState = .initial
     @Published var originalPostData: UserPostData? = nil
     @Published var updatedPostData: UserPostData? = nil
-    private let service: UserDataService = UserDataService()
+    private let service: NetworkServiceAsync = NetworkServiceAsync()
 
     @MainActor func fetchOriginalData() {
 

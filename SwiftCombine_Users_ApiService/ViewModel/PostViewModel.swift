@@ -10,7 +10,7 @@ import Foundation
 class PostViewModel: ObservableObject {
     @Published var viewState: ViewState = .initial
     @Published var postData: UserPostData? = nil
-    private let service: UserDataService = UserDataService()
+    private let service: NetworkServiceAsync = NetworkServiceAsync()
     
     @MainActor func postData(postTitle: String, postBody: String) {
         if postTitle == "" || postBody == "" {
