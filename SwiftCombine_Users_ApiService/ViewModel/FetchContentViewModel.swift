@@ -6,18 +6,42 @@
 //
 
 import Foundation
-import Combine;
+import Combine
+import SwiftUI
+
+enum ServiceType {
+    case AsyncAwait, CombineFuture, CombinePublisher
+}
 
 class FetchContentViewModel: ObservableObject {
     
-    @Published var users: Dictionary<Int, User> = Dictionary();
-    let userDataService: NetworkServiceAsync = NetworkServiceAsync();
+    @Published var users: [Int: User] = [:]
+    let networkServiceAsync: NetworkServiceAsync = NetworkServiceAsync();
+    let networkServiceFuture: NetworkServiceFuture = NetworkServiceFuture();
+    let networkServicePublusher: NetworkServicePublisher = NetworkServicePublisher();
     var cancellable = Set<AnyCancellable>();
+    let serviceType: ServiceType = .CombineFuture
     
-    @MainActor func fetchPostsAsyncAwait() {
+    public func fetchPosts() {
+        switch self.serviceType {
+            case .AsyncAwait:
+                // Not sure if this is good pracice, just using it for
+                // easy swaping to other forms of network calls in testing.
+                Task {
+                    await self.fetchPostsAsync()
+                }
+                break;
+            case .CombineFuture:
+                self.fetchPostsFuture()
+            case .CombinePublisher:
+                self.fetchPostsPublisher()
+        }
+    }
+    
+    @MainActor private func fetchPostsAsync() {
         Task {
             do {
-                let posts: [UserPostData] = try await self.userDataService.fetchPostsUsingAsyncAwait()
+                let posts: [UserPostData] = try await self.networkServiceAsync.fetchPosts()
                 self.processData(data: posts);
             }
             catch {
@@ -31,68 +55,27 @@ class FetchContentViewModel: ObservableObject {
         }
     }
     
-//    @MainActor func postAsyncAwait() {
-//        Task {
-//            do {
-//                let post: UserPostData = try await self.userDataService.addPostUsingAsyncAwait(UserPostData(userID: 2,
-//                                                                                                            postID: 8,
-//                                                                                                            postTitle: "POST",
-//                                                                                                            postBody: "POST: Body"))
-//                print("POST Response: \(post)")
-//            }
-//            catch {
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
-//
-//    @MainActor func putAsyncAwait() {
-//        Task {
-//
-//            do {
-//                let post: UserPostData = try await self.userDataService
-//                                                       .putPostUsingAsyncAwait(UserPostData(userID: 2,
-//                                                                                            postID: 8,
-//                                                                                            postTitle: "PUT",
-//                                                                                            postBody: "PUT: Body"))
-//                print("PUT Response: \(post)")
-//            }
-//            catch {
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
-//
-//    @MainActor func patchAsyncAwait() {
-//        Task {
-//
-//            do {
-//                let post: UserPostData = try await self.userDataService
-//                                                       .patchPostUsingAsyncAwait(data: ["title": "Patch Title"])
-//                print("PATCH Response: \(post)")
-//            }
-//            catch {
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
-//    @MainActor func deleteAsyncAwait() {
-//        Task {
-//
-//            do {
-//                try await self.userDataService
-//                              .deletePostUsingAsyncAwait()
-//                print("DELETE Response: DELETED")
-//            }
-//            catch {
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
+    private func fetchPostsFuture() {
+
+        self.networkServiceFuture.fetchPosts()
+            .sink(receiveCompletion: { completion in
+                switch(completion) {
+                case .finished:
+                    break;
+                case .failure(let err):
+                    print("Fetch failed.\n    \(err.localizedDescription)");
+                    return;
+                }
+            }, receiveValue: {[weak self] data in
+                print("Recieved \(data.count) items from server. Processing.")
+                self?.processData(data: data);
+            })
+            .store(in: &self.cancellable)
+    }
     
-    public func fetchData() {
-        
-        self.userDataService.fetchData()
+    private func fetchPostsPublisher() {
+
+        self.networkServicePublusher.fetchPosts()
             .sink(receiveCompletion: { completion in
                 switch(completion) {
                 case .finished:
