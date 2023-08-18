@@ -31,7 +31,6 @@ class NetworkServiceFuture {
             
             URLSession.shared.dataTaskPublisher(for: url)
                 .map {
-                    print("Received data. Continuing processing.")
                     return $0.data
                 }
                 .decode(type: [UserPostData].self, decoder: JSONDecoder())
