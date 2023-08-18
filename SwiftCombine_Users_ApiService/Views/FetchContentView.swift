@@ -13,15 +13,46 @@ struct FetchContentView: View {
         
         NavigationView {
             
-            ScrollView {
+            VStack {
+                HStack {
+                    Button(action: {
+                        viewModel.fetchPosts(.AsyncAwait)
+                    }) {
+                        Text("Fetch w/ Async")
+                    }
+                    .padding(5)
+                    .background(Color(UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)))
+                    .cornerRadius(10)
+                    
+                    Button(action: {
+                        viewModel.fetchPosts(.CombineFuture)
+                    }) {
+                        Text("Fetch w/ Future")
+                    }
+                    .padding(5)
+                    .background(Color(UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)))
+                    .cornerRadius(10)
+                }
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding()
                 
-                Text("Fetch")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding(.bottom)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                userList
+                ScrollView {
+                    
+                    Text("Fetch")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.bottom)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    switch viewModel.viewState {
+                        case .initial, .loading:
+                            ProgressView()
+                        case .loaded:
+                            userList
+                        case .error, .badInput:
+                            Text("Something went wrong. Please try again later.")
+                    }
+                }
             }
         }
         .onAppear() {
