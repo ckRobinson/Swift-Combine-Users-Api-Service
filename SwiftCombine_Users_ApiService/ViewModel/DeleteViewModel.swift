@@ -23,8 +23,8 @@ class DeleteViewModel: ObservableObject {
     let networkServiceFuture: NetworkServiceFuture = NetworkServiceFuture();
     let networkServicePublusher: NetworkServicePublisher = NetworkServicePublisher();
     
-    public func deleteData() {
-        switch self.serviceType {
+    public func deleteData(_ serviceType: ServiceType = .AsyncAwait) {
+        switch serviceType {
             case .AsyncAwait:
                 // Not sure if this is good pracice, just using it for
                 // easy swaping to other forms of network calls in testing.

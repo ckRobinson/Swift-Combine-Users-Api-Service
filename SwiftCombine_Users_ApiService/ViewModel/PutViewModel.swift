@@ -22,13 +22,13 @@ class PutViewModel: ObservableObject {
     let networkServiceFuture: NetworkServiceFuture = NetworkServiceFuture();
     let networkServicePublusher: NetworkServicePublisher = NetworkServicePublisher();
     
-    public func putData(postTitle: String, postBody: String) {
+    public func putData(postTitle: String, postBody: String, _ serviceType: ServiceType = .AsyncAwait) {
         if postTitle == "" || postBody == "" {
             self.viewState = .badInput
             return;
         }
         
-        switch self.serviceType {
+        switch serviceType {
             case .AsyncAwait:
                 // Not sure if this is good pracice, just using it for
                 // easy swaping to other forms of network calls in testing.
