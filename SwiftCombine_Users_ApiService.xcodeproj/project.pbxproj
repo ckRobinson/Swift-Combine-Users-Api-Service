@@ -10,7 +10,7 @@
 		7E3299D92A44B7850077868D /* SwiftCombine_Users_ApiServiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3299D82A44B7850077868D /* SwiftCombine_Users_ApiServiceApp.swift */; };
 		7E3299DD2A44B7850077868D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E3299DC2A44B7850077868D /* Assets.xcassets */; };
 		7E3299E02A44B7850077868D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E3299DF2A44B7850077868D /* Preview Assets.xcassets */; };
-		7E3299F02A44B81E0077868D /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3299E72A44B81E0077868D /* UserDataService.swift */; };
+		7E3299F02A44B81E0077868D /* NetworkServiceAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3299E72A44B81E0077868D /* NetworkServiceAsync.swift */; };
 		7E3299F12A44B81E0077868D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3299E92A44B81E0077868D /* User.swift */; };
 		7E3299F22A44B81E0077868D /* UserPostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3299EA2A44B81E0077868D /* UserPostData.swift */; };
 		7E3299F32A44B81E0077868D /* FetchContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3299EC2A44B81E0077868D /* FetchContentViewModel.swift */; };
@@ -26,6 +26,8 @@
 		7E7A977E2A8EE61400807128 /* PutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7A977D2A8EE61400807128 /* PutViewModel.swift */; };
 		7E7A97802A8EE62F00807128 /* PatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7A977F2A8EE62F00807128 /* PatchViewModel.swift */; };
 		7E7A97822A8EE64300807128 /* DeleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7A97812A8EE64300807128 /* DeleteViewModel.swift */; };
+		7E7A97842A8EEBB700807128 /* NetworkServiceFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7A97832A8EEBB700807128 /* NetworkServiceFuture.swift */; };
+		7E7A97862A8EECEF00807128 /* NetworkServicePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7A97852A8EECEF00807128 /* NetworkServicePublisher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +35,7 @@
 		7E3299D82A44B7850077868D /* SwiftCombine_Users_ApiServiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCombine_Users_ApiServiceApp.swift; sourceTree = "<group>"; };
 		7E3299DC2A44B7850077868D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E3299DF2A44B7850077868D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		7E3299E72A44B81E0077868D /* UserDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
+		7E3299E72A44B81E0077868D /* NetworkServiceAsync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceAsync.swift; sourceTree = "<group>"; };
 		7E3299E92A44B81E0077868D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7E3299EA2A44B81E0077868D /* UserPostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostData.swift; sourceTree = "<group>"; };
 		7E3299EC2A44B81E0077868D /* FetchContentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchContentViewModel.swift; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		7E7A977D2A8EE61400807128 /* PutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutViewModel.swift; sourceTree = "<group>"; };
 		7E7A977F2A8EE62F00807128 /* PatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchViewModel.swift; sourceTree = "<group>"; };
 		7E7A97812A8EE64300807128 /* DeleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteViewModel.swift; sourceTree = "<group>"; };
+		7E7A97832A8EEBB700807128 /* NetworkServiceFuture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceFuture.swift; sourceTree = "<group>"; };
+		7E7A97852A8EECEF00807128 /* NetworkServicePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServicePublisher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +107,9 @@
 		7E3299E62A44B81E0077868D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				7E3299E72A44B81E0077868D /* UserDataService.swift */,
+				7E3299E72A44B81E0077868D /* NetworkServiceAsync.swift */,
+				7E7A97832A8EEBB700807128 /* NetworkServiceFuture.swift */,
+				7E7A97852A8EECEF00807128 /* NetworkServicePublisher.swift */,
 			);
 			name = Networking;
 			path = SwiftCombine_Users_ApiService/Networking;
@@ -223,16 +229,18 @@
 				7E3299F22A44B81E0077868D /* UserPostData.swift in Sources */,
 				7E7A97762A8EC62B00807128 /* ViewState.swift in Sources */,
 				7E3299F52A44B81E0077868D /* ContentView.swift in Sources */,
-				7E3299F02A44B81E0077868D /* UserDataService.swift in Sources */,
+				7E3299F02A44B81E0077868D /* NetworkServiceAsync.swift in Sources */,
 				7E7A977E2A8EE61400807128 /* PutViewModel.swift in Sources */,
 				7E3299D92A44B7850077868D /* SwiftCombine_Users_ApiServiceApp.swift in Sources */,
 				7E7A97742A8EC5D500807128 /* PutContentView.swift in Sources */,
 				7E7A977C2A8EE5FF00807128 /* PostViewModel.swift in Sources */,
 				7E7A97722A8EC29400807128 /* PostContentView.swift in Sources */,
+				7E7A97842A8EEBB700807128 /* NetworkServiceFuture.swift in Sources */,
 				7E7A97802A8EE62F00807128 /* PatchViewModel.swift in Sources */,
 				7E3299F12A44B81E0077868D /* User.swift in Sources */,
 				7E7A977A2A8EE3FD00807128 /* DeleteContentView.swift in Sources */,
 				7E3299F32A44B81E0077868D /* FetchContentViewModel.swift in Sources */,
+				7E7A97862A8EECEF00807128 /* NetworkServicePublisher.swift in Sources */,
 				7E7A97822A8EE64300807128 /* DeleteViewModel.swift in Sources */,
 				7E7A97782A8EDB9800807128 /* PatchContentView.swift in Sources */,
 			);
