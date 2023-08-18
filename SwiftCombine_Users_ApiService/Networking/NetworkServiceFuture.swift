@@ -89,10 +89,9 @@ class NetworkServiceFuture {
                 return
             }
             
-            guard var url = URL(string: self.apiUrl) else {
+            guard let url = URL(string: self.apiUrl) else {
                 return
             }
-            url.append(component: "\(postID)")
             
             var request = URLRequest(url: url);
             request.httpMethod = "POST"
