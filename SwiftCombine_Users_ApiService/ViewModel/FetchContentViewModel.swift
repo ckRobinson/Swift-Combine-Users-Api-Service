@@ -16,11 +16,14 @@ enum ServiceType {
 class FetchContentViewModel: ObservableObject {
     
     @Published var users: [Int: User] = [:]
+    var cancellable = Set<AnyCancellable>();
+    
+    // Can't think of easy way to make this a protocl since all different return types / Async throws
+    // initing all 3 and using methods here to test each style.
+    let serviceType: ServiceType = .CombineFuture
     let networkServiceAsync: NetworkServiceAsync = NetworkServiceAsync();
     let networkServiceFuture: NetworkServiceFuture = NetworkServiceFuture();
     let networkServicePublusher: NetworkServicePublisher = NetworkServicePublisher();
-    var cancellable = Set<AnyCancellable>();
-    let serviceType: ServiceType = .CombineFuture
     
     public func fetchPosts() {
         switch self.serviceType {

@@ -35,7 +35,7 @@ class DeleteViewModel: ObservableObject {
         Task {
             
             do {
-                try await service.deletePostUsingAsyncAwait()
+                try await service.deleteUserPost()
                 self.viewState = .loaded
             }
             catch {

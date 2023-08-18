@@ -22,7 +22,7 @@ class PostViewModel: ObservableObject {
         Task {
             
             do {
-                let data = try await service.addPostUsingAsyncAwait(UserPostData(userID: 1, postID: 1, postTitle: postTitle, postBody: postBody))
+                let data = try await networkServiceAsync.postUserPost(UserPostData(userID: 1, postID: 1, postTitle: postTitle, postBody: postBody))
                 self.postData = data
                 self.viewState = .loaded
             }

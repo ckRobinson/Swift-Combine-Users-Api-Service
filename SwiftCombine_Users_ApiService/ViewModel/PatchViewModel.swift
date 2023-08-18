@@ -49,7 +49,7 @@ class PatchViewModel: ObservableObject {
         Task {
             
             do {
-                let data = try await service.patchPostUsingAsyncAwait(data: jsonData)
+                let data = try await service.patchUserPost(data: jsonData)
                 self.updatedPostData = data
                 self.viewState = .loaded
             }

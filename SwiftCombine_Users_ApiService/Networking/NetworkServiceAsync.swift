@@ -64,7 +64,7 @@ class NetworkServiceAsync {
         return try JSONDecoder().decode(UserPostData.self, from: data)
     }
     
-    public func addPostUsingAsyncAwait(_ postData: UserPostData) async throws -> UserPostData {
+    public func postUserPost(_ postData: UserPostData) async throws -> UserPostData {
         
         guard let url = URL(string: self.apiUrl) else {
             throw APIError.invalidUrl
@@ -84,7 +84,7 @@ class NetworkServiceAsync {
         return try JSONDecoder().decode(UserPostData.self, from: data)
     }
     
-    public func putPostUsingAsyncAwait(_ postData: UserPostData) async throws -> UserPostData {
+    public func putUserPost(_ postData: UserPostData) async throws -> UserPostData {
         
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts/1") else {
             throw APIError.invalidUrl
@@ -105,7 +105,7 @@ class NetworkServiceAsync {
         return try JSONDecoder().decode(UserPostData.self, from: data)
     }
     
-    public func patchPostUsingAsyncAwait<T: Encodable>(data: [String: T]) async throws -> UserPostData  {
+    public func patchUserPost<T: Encodable>(data: [String: T]) async throws -> UserPostData  {
         
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts/1") else {
             throw APIError.invalidUrl
@@ -126,7 +126,7 @@ class NetworkServiceAsync {
         return try JSONDecoder().decode(UserPostData.self, from: data)
     }
     
-    public func deletePostUsingAsyncAwait() async throws -> Void  {
+    public func deleteUserPost() async throws -> Void  {
         
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts/1") else {
             throw APIError.invalidUrl

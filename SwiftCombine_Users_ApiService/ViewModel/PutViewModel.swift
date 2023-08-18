@@ -40,7 +40,7 @@ class PutViewModel: ObservableObject {
         Task {
             
             do {
-                let data = try await service.addPostUsingAsyncAwait(UserPostData(userID: 1, postID: 1, postTitle: postTitle, postBody: postBody))
+                let data = try await service.postUserPost(UserPostData(userID: 1, postID: 1, postTitle: postTitle, postBody: postBody))
                 self.updatedPostData = data
                 self.viewState = .loaded
             }
