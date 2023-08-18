@@ -19,13 +19,11 @@ class NetworkServiceFuture {
         return Future {[weak self] promise in
             
             guard let self = self else {
-                print("Could not process fetch. Self was nil.")
                 return;
             }
             
             let url = URL(string: self.apiUrl);
             guard let url = url else {
-                print("Could not process fetch. Url returned nul.");
                 return;
             }
             

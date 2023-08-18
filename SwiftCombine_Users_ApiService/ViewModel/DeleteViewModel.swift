@@ -81,7 +81,6 @@ class DeleteViewModel: ObservableObject {
                     case .finished:
                         break;
                     case .failure(_):
-                        print("Could not complete delete.")
                         self?.viewState = .error
                 }
             }, receiveValue: {[weak self] value in

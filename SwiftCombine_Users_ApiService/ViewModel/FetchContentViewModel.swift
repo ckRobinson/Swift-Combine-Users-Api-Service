@@ -72,8 +72,7 @@ class FetchContentViewModel: ObservableObject {
                 switch(completion) {
                 case .finished:
                     break;
-                case .failure(let err):
-                    print("Fetch failed.\n    \(err.localizedDescription)");
+                case .failure(_):
                     self?.viewState = .error
                     return;
                 }
@@ -91,8 +90,7 @@ class FetchContentViewModel: ObservableObject {
                 switch(completion) {
                 case .finished:
                     break;
-                case .failure(let err):
-                    print("Fetch failed.\n    \(err.localizedDescription)");
+                case .failure(_):
                     self?.viewState = .error
                     return;
                 }
