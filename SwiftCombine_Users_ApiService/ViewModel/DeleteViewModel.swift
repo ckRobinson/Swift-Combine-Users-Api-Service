@@ -16,6 +16,8 @@ class DeleteViewModel: ObservableObject {
     @Published var viewState: ViewState = .initial
     @Published var originalPostData: UserPostData? = nil
 
+    // Can't think of easy way to make this a protocol since all different return types / Async throws
+    // initing all 3 and using methods here to test each style.
     let serviceType: ServiceType = .CombineFuture
     let networkServiceAsync: NetworkServiceAsync = NetworkServiceAsync();
     let networkServiceFuture: NetworkServiceFuture = NetworkServiceFuture();
@@ -53,7 +55,8 @@ class DeleteViewModel: ObservableObject {
     }
     
     @MainActor private func deleteDataAsync() {
-                
+        print("Deleting with Async")
+
         self.viewState = .loading
         Task {
             
@@ -69,14 +72,15 @@ class DeleteViewModel: ObservableObject {
     }
     
     private func deleteDataFuture() {
-        
+        print("Deleting with Future")
+
         self.viewState = .loading
         self.networkServiceFuture.deleteUserPost()
             .sink(receiveCompletion: {[weak self] completion in
                 switch completion {
                     case .finished:
                         break;
-                    case .failure(let err):
+                    case .failure(_):
                         print("Could not complete delete.")
                         self?.viewState = .error
                 }
